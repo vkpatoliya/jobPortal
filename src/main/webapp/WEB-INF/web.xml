@@ -14,4 +14,69 @@
    <servlet-name>login</servlet-name>
    <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>addpostservlet</servlet-name>
+  <servlet-class>com.servlets.AddPostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>addpostservlet</servlet-name>
+   <url-pattern>/add_job</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- edit job mate -->
+  <servlet>
+  <servlet-name>updatejob</servlet-name>
+  <servlet-class>com.servlets.UpdateJobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>updatejob</servlet-name>
+   <url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  
+  <!-- delete job mate -->
+  <servlet>
+  <servlet-name>deletejob</servlet-name>
+  <servlet-class>com.servlets.DeleteJobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>deletejob</servlet-name>
+   <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
+  <!-- user side user add -->
+  <servlet>
+  <servlet-name>adduser</servlet-name>
+  <servlet-class>com.servlets.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>adduser</servlet-name>
+   <url-pattern>/add_user</url-pattern>
+  </servlet-mapping>
+  
+   <!-- logout mate -->
+  <servlet>
+  <servlet-name>logout</servlet-name>
+  <servlet-class>com.servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>logout</servlet-name>
+   <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+    <!-- user profile update par click karva mate -->
+  <servlet>
+  <servlet-name>updateuserprofile</servlet-name>
+  <servlet-class>com.servlets.UpdateUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>updateuserprofile</servlet-name>
+   <url-pattern>/update_profile</url-pattern>
+  </servlet-mapping>
+  
+  
+   
+  
+  
 </web-app>

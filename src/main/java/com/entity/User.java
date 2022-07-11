@@ -7,7 +7,8 @@ public class User {
 	private String password;
 	private String qualification;
 	private String role;
-	
+
+
 	
 	public User() {
 		super();
@@ -21,6 +22,7 @@ public class User {
 		this.password = password;
 		this.qualification = qualification;
 		this.role = role;
+		
 	}
 
 	public int getId() {
@@ -59,6 +61,9 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+
+	
 	
 	
 	

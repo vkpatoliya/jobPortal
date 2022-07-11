@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,23 +24,31 @@
 
 <h5>Registration</h5>
 </div>
-<form action="Register" method="post">
+
+<c:if test="${not empty succMsg}">
+<h4 class="text-center text-success">${succMsg}</h4>
+<c:remove var="succMsg"/>
+</c:if>
+
+<form action="add_user" method="post">
 <div class="form-group">
 <label>Enter Full Name</label><input type="text" required="required" class="form-control" id="exampleInputEmail"
  aria-describedby="emailHelp" name="name">
 </div>
-<div class="form-group">
-<label>Enter Qualification</label><input type="text" required="required" class="form-control" id="exampleInputEmail"
- aria-describedby="emailHelp" name="qua">
-</div>
+
 <div class="form-group">
 <label>Enter Email</label><input type="email" required="required" class="form-control" id="exampleInputEmail"
- aria-describedby="emailHelp" name="em">
+ aria-describedby="emailHelp" name="email">
 </div>
 <div class="form-group">
 <label for="exampleInputPassword1">Enter Password</label><input type="password" required="required" class="form-control" 
-id="exampleInputPassword1" name="ps">
+id="exampleInputPassword1" name="password">
 </div>
+<div class="form-group">
+<label>Enter Qualification</label><input type="text" required="required" class="form-control" id="exampleInputEmail"
+ aria-describedby="emailHelp" name="qualification">
+</div>
+
 <button type="submit" class="btn btn-primary badge-pill btn-block">Register</button>
 </form>
 

@@ -2,19 +2,20 @@ package com.entity;
 
 public class Jobs {
 	private int id;
-	private String title;
+	public String title;
 	private String description;
 	private String category;
 	private String status;
 	private String location;
 	private String pdate;
+	private String email;
 	
 	public Jobs() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Jobs(String title, String description, String category, String status, String location, String pdate) {
+	public Jobs(String title, String description, String category, String status, String location, String pdate,String email) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -22,6 +23,7 @@ public class Jobs {
 		this.status = status;
 		this.location = location;
 		this.pdate = pdate;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -78,6 +80,14 @@ public class Jobs {
 
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 

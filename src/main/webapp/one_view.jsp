@@ -12,12 +12,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin: View Jobs</title>
+<title>User: One view Jobs</title>
 <%@include file="all_component/all_css.jsp" %>
 </head>
 <body style="background-color: #f0f1f2">
 
-<c:if test="${userobj.role ne 'admin' }">
+<c:if test="${empty userobj}">
 <c:redirect url="login.jsp"></c:redirect>
 </c:if>
 
@@ -25,20 +25,18 @@
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<h5 class="text-center text-primary">All Jobs</h5>
-<c:if test="${not empty succMsg }">
+<h5 class="text-center text-primary">Jobs</h5>
 
-<div class="alert alert-success" role="alert">
-  ${succMsg}
-  <c:remove var="succMsg"/>
-</div>
-</c:if>
 
-<% JobDAO dao = new JobDAO(DBConnect.getConn());
+
+<% 
+int id = Integer.parseInt(request.getParameter("id"));
+JobDAO dao = new JobDAO(DBConnect.getConn());
 List<Jobs> list = dao.getAllJobs();
-for(Jobs j : list){%>
+Jobs j = dao.getJobById(id);
+%>
 	
-<div class="card mt-2">
+<div class="card mt-5">
 <div class="card-body">
 <div class="text-center text-primary">
 <i class="far fa-clipboard fa-2x"></i>
@@ -50,9 +48,13 @@ for(Jobs j : list){%>
 <p><%=j.getDescription() %></p>
 <br>
 <div class="form-row">
+<div class="form-group col-md-3">
+<input type="text"class="form-control form-control-sm" value="Email:<%=j.getEmail() %>" readonly>
+
+</div>
 
 <div class="form-group col-md-3">
-<input type="text"class="form-control form-control-sm" value="Email:<%=j.getEmail() %>"readonly>
+<input type="text"class="form-control form-control-sm" value="Location:<%=j.getLocation()%>" readonly>
 
 </div>
 
@@ -60,32 +62,20 @@ for(Jobs j : list){%>
 <input type="text"class="form-control form-control-sm" value="Category:<%=j.getCategory()%>" readonly>
 
 </div>
-<div class="form-group col-md-3">
-<input type="text"class="form-control form-control-sm" value="Status:<%=j.getStatus()%>" readonly>
 
-</div>
-<div class="form-group col-md-3">
-<input type="text"class="form-control form-control-sm" value="Location:<%=j.getLocation()%>" readonly>
-
-</div>
 </div>
 <h6><b>Publish Date:<%=j.getPdate()%></b></h6>
-<div class="text-center">
-<a href="edit_job.jsp?id=<%=j.getId()%>" class="btn btn-sm bg-success text-white">Edit</a>
-<a href="delete?id=<%=j.getId()%>" class="btn btn-sm bg-danger text-white">Delete</a>
-</div>
 
-</div>
-</div>
-	<%
-	
-}
-%>
 
 </div>
 </div>
 
 </div>
+</div>
+
+</div>
+
+
 
 </body>
 </html>

@@ -10,6 +10,8 @@
 </head>
 <body style="background-color: #f0f1f2">
 <%@include file="all_component/navbar.jsp" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ page isELIgnored="false" %>
 
 <div class="container-fluid">
 <div class="row p-5">
@@ -23,6 +25,10 @@
 
 <h5>Login</h5>
 </div>
+<c:if test="${not empty succMsg }">
+<h4 class="text-center text-danger">${succMsg}</h4>
+<c:remove var="succMsg"/>
+</c:if>
 <form action="login" method="post">
 <div class="form-group">
 <label>Enter Email</label><input type="email" required="required" class="form-control" id="exampleInputEmail"

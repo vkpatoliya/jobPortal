@@ -1,4 +1,6 @@
 package com.servlets;
+import com.DB.DBConnect;
+import com.dao.UserDAO;
 import com.entity.*;
 import java.io.IOException;
 
@@ -23,6 +25,19 @@ public class LoginServlet extends HttpServlet {
 				u.setRole("admin");
 				resp.sendRedirect("admin.jsp");
 			}else {
+				UserDAO dao = new UserDAO(DBConnect.getConn());
+				User user = dao.login(em, ps);
+				if(user!=null) {
+					session.setAttribute("userobj",user);
+					user.setRole("user");
+				
+					resp.sendRedirect("home.jsp");
+				}else {
+					session.setAttribute("succMsg","Invalid user and password");
+					
+					resp.sendRedirect("login.jsp");
+					
+				}
 				
 			}
 			
